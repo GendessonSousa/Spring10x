@@ -23,8 +23,10 @@ public class NinjaModel {
      private String nome;
      @Column(unique = true)
      private String email;
-    @Column(name = "idade")
+     @Column(name = "idade")
      private int idade;
+     @Column(name = "img_url")
+     private String imgUrl;
 
      @ManyToOne
      @JoinColumn(name = "missoes_id") //Foreign key
