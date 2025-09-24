@@ -32,5 +32,10 @@ public class NinjaModel {
      @JoinColumn(name = "missoes_id") //Foreign key
      private MissoesModel missoes;
 
-
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
