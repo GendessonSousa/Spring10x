@@ -1,38 +1,21 @@
 package dev.Gendesson.CadastroDeNinjas.Ninjas;
 
 import dev.Gendesson.CadastroDeNinjas.Missoes.MissoesModel;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
-@Entity
-@Table(name = "tb_cadastro")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-public class NinjaModel {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-     private Long id;
-    @Column(name = "nome")
-     private String nome;
-     @Column(unique = true)
-     private String email;
-     @Column(name = "idade")
-     private int idade;
-     @Column(name = "img_url")
-     private String imgUrl;
-     @Column(name = "rank")
-     private String rank;
-
-     @ManyToOne
-     @JoinColumn(name = "missoes_id") //Foreign key
-     private MissoesModel missoes;
+public class NinjaDTO {
+    private Long id;
+    private String nome;
+    private String email;
+    private int idade;
+    private String imgUrl;
+    private MissoesModel missoes;
+    private String rank;
 
     public Long getId() {
         return id;
