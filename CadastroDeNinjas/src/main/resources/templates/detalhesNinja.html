@@ -1,0 +1,157 @@
+<!
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detalhes do ninja</title>
+    <style>
+        /* ====== ESTILO GERAL ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #101820, #1e2a38);
+            color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #00bcd4;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 188, 212, 0.4);
+        }
+
+        /* ====== CONTAINER ====== */
+        div {
+            background: #1f2d3b;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        img {
+            border-radius: 50%;
+            border: 3px solid #00bcd4;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #00bcd4;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 6px 0;
+            font-size: 1rem;
+        }
+
+        strong {
+            color: #00bcd4;
+        }
+
+        /* ====== TABELA DE MISSÕES ====== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #263646;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+        }
+
+        thead {
+            background: #00bcd4;
+            color: #fff;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        tbody tr:hover {
+            background: rgba(0, 188, 212, 0.15);
+            transition: background 0.3s ease;
+        }
+
+        /* ====== BOTÃO VOLTAR ====== */
+        a {
+            display: inline-block;
+            background: #3a7bd5;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(0, 188, 212, 0.4);
+        }
+
+        a:hover {
+            background: #2a5fa2;
+            transform: translateY(-2px);
+            box-shadow: 0 0 12px rgba(0, 188, 212, 0.6);
+        }
+
+        /* ====== RESPONSIVIDADE ====== */
+        @media (max-width: 600px) {
+            div {
+                padding: 20px;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Detalhes do ninja</h1>
+<div>
+    <img th:src="${ninja.imgUrl}" alt="${ninja.nome}" width="200" />
+    <h2 th:text="${ninja.nome}"></h2>
+    <p><strong>Email:</strong> <span th:text="${ninja.email}"></span></p>
+    <p><strong>Idade:</strong> <span th:text="${ninja.idade}"></span></p>
+    <p><strong>Rank:</strong> <span th:text="${ninja.rank}"></span></p>
+
+    <h3>Missões:</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Dificuldade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="missao : ${ninja.missoes}">
+            <td th:text="${missao.nome}"></td>
+            <td th:text="${missao.dificuldade}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<a href="/ninjas/ui/listar">Voltar para a lista de ninjas</a>
+</body>
+</html>
